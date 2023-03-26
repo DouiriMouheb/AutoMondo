@@ -16,13 +16,13 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/" exact element={<Home />} />
-              <Route path="/movie/:imdbID" element={<MovieDetail />} />
+              <Route path="/movie/:carId" element={<MovieDetail />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </div>
         </Router>
       </div>
-      <Footer />
+     {/*  <Footer /> */}
     </>
   );
 }

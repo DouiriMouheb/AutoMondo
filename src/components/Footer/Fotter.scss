@@ -1,11 +1,13 @@
 @import "../../common/colors.scss";
-.footer{
-    background-color: $secondary-color;
-   margin-bottom: 0%;
-   padding-bottom: 0;
-    height: 72px;
-    padding: 0px 40px;
+.footer {
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(13, 51, 175);
+    color: #fff;
+    text-align: center;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+   align-items: spa;
+  }

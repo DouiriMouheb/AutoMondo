@@ -4,7 +4,7 @@ import "./Fotter.scss";
 const Footer = () => {
   return (
     <div className="footer">
-      {/*  <ScrollToTop smooth top={10} /> */}
+        <ScrollToTop smooth top={10} /> 
       <div>Creation H&M Digital</div>
       <div>2023</div>
     </div>

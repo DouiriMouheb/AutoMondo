@@ -1,50 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getAllMovies, getAllShows } from "../../features/movies/movieSlice";
 import MovieCard from "../MovieCard/MovieCard";
 import Slider from "react-slick";
 import "./MovieListing.scss";
 import { sliderSettings } from "../../common/settings";
+import axios from "axios";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const MovieListing = () => {
-  const movies = useSelector(getAllMovies);
-  const shows = useSelector(getAllShows);
-  let renderMovies,
-    renderShows = "";
+  const [cars, setCars] = useState(null);
 
-  renderMovies =
-    movies.Response === "True" ? (
-      movies.Search.map((movie, index) => (
-        <MovieCard key={index} data={movie} />
-      ))
+  const fetchCars = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/cars");
+      setCars(res.data.cars);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCars();
+  }, []);
+
+ 
+  let renderCars =
+    cars ? (
+      cars.map((car, index) => <MovieCard key={index} data={car}></MovieCard>)
     ) : (
-      <div className="movies-error">
-        <h3></h3>
-        {movies.Error}
-      </div>
+    <Box sm={{ display: "flex" }}>
+      <CircularProgress />
+    </Box>
     );
-  renderShows =
-    shows.Response === "True" ? (
-      shows.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
-    ) : (
-      <div className="movies-error">
-        <h3>ERORRR</h3>
-        {shows.Error}
-      </div>
-    );
+
   return (
-    <div className="movie-wrapper">
+    
       <div className="movie-list">
-        <h2>Our Proudcts</h2>
+        <h2>Nos Produits</h2>
         <div className="movie-container">
-          <Slider {...sliderSettings}>{renderMovies}</Slider>{" "}
+          <Slider {...sliderSettings}>{renderCars}</Slider>
         </div>
       </div>
-      {/* <div className="show-list">
-        <h2>Shows</h2>
-        <div className="movie-container">{renderShows}</div>
-      </div> */}
-    </div>
   );
 };
 

@@ -1,21 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MovieListing from "../MovieListing/MovieListing";
-import { useDispatch } from "react-redux";
-import {
-  fetchAsyncMovies,
-  fetchAsyncShows,
-} from "../../features/movies/movieSlice";
+import axios from "axios";
+import DashBoard from "../Admin/DashBoard";
+
 const Home = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAsyncMovies());
-    dispatch(fetchAsyncShows());
-  }, [dispatch]);
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   return (
-    <div>
-      <div className="banner-img">Home</div>
-      <MovieListing />
-    </div>
+    <>
+    <MovieListing />
+    <DashBoard/></>
+      
+     
+    
   );
 };
 
