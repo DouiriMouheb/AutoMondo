@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
     <MovieListing />
-    <DashBoard/></>
+    {/* <DashBoard/> */}</>
       
      
     

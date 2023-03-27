@@ -11,20 +11,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+
 function DashBoard() {
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
+ 
   // State
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+ 
 
   const handleClose = () => {
     setOpen(false);
@@ -145,23 +138,13 @@ function DashBoard() {
   };
 
   return (
+    <>
     <div className="App">
-      <div>
-        <h2>cars:</h2>
-        {cars &&
-          cars.map((car) => {
-            return (
-              <div key={car._id}>
-                <h3>{car.name}</h3>
-                <button onClick={() => deleteCar(car._id)}>Delete note</button>
-                <Button  variant="outlined" onClick={() => toggleUpdate(car)}>Update note</Button>
-               
-              </div>
-            );
-          })}
-      </div>
-
-      {updateForm._id && (
+    <Grid container spacing={2}>
+  
+  <Grid item xs={6}>
+  
+    {updateForm._id && (
         <div>
           <Dialog
         open={open}
@@ -231,8 +214,7 @@ function DashBoard() {
         </div>
       )}
 
-      {!updateForm._id && (
-        <div>
+<div>
           <h2>Create Car</h2>
           <form onSubmit={createCar}>
             <Box sx={{ flexGrow: 1 }}>
@@ -286,8 +268,41 @@ function DashBoard() {
             </Button>
           </form>
         </div>
-      )}
+  </Grid>
+  <Grid item xs>
+  <table>
+  <thead>
+    <tr>
+      <th>Car Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {cars &&
+      cars.map((car) => {
+        return (
+          <tr key={car._id}>
+            <td>{car.name}</td>
+            <td>
+              <button onClick={() => deleteCar(car._id)}>Delete note</button>
+              <Button variant="outlined" onClick={() => toggleUpdate(car)}>
+                Update note
+              </Button>
+            </td>
+          </tr>
+        );
+      })}
+  </tbody>
+    </table>
+  </Grid>
+</Grid>
+   
+
+
+     
     </div>
+   </>
+    
   );
 }
 

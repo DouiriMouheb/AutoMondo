@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import MovieDetail from "./components/MovieDetails/MovieDetail";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import Footer from "./components/Footer/Footer";
+import DashBoard from "./components/Admin/DashBoard";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="/" exact element={<Home />} />
               <Route path="/movie/:carId" element={<MovieDetail />} />
               <Route path="*" element={<PageNotFound />} />
+              <Route path="/admin" element={<DashBoard/>}/>
             </Routes>
           </div>
         </Router>

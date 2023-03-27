@@ -13,8 +13,9 @@ body{
     background-color: rgb(217, 218, 224);
 }
 .container{
-    height: 80vh;
+    height: auto;
    background-color: rgb(217, 218, 224);
-   margin: 5%;   
+   margin: 5%; 
+   padding: 5%;  
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }

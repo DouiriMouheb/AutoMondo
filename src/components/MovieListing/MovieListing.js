@@ -37,7 +37,7 @@ const MovieListing = () => {
   return (
     
       <div className="movie-list">
-        <h2>Nos Produits</h2>
+        
         <div className="movie-container">
           <Slider {...sliderSettings}>{renderCars}</Slider>
         </div>
