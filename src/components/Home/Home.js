@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from "react";
 import MovieListing from "../MovieListing/MovieListing";
-import axios from "axios";
-import DashBoard from "../Admin/DashBoard";
-
+import image from "../../assets/BigPoster.svg";
+import "./Home.scss";
 const Home = () => {
- 
- 
- 
- 
- 
- 
- 
   return (
     <>
-    <MovieListing />
-    {/* <DashBoard/> */}</>
-      
-     
-    
+      <div className="Poster">
+        <img src={image} />
+      </div>
+      <MovieListing />
+    </>
   );
 };
 

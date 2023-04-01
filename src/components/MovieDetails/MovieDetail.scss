@@ -1,11 +1,15 @@
 .movie-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    margin: 5%;
+   align-items: center;
+    
   }
   
   .Card-position {
-    width: 435px;
+    width: auto;
+    height: auto;
+   
+  }
+  .imagesList,.imagesList img{
+    width: 100%;
+    min-height: 50%;
+    object-fit: contain;
   }

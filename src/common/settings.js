@@ -46,7 +46,7 @@ export const sliderSettings = {
       settings: {
         slidesToShow: 2,
         slidesToScroll: 1,
-        rows: 2,
+       
         slidesPerRow: 1,
       },
     },
