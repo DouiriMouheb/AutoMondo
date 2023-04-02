@@ -8,24 +8,31 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import "./MovieDetail.scss";
 import Slider from "react-slick";
-
-
 const CarDetail = () => {
+  const url = process.env.NODE_ENV === 'production'
+  ? process.env.REACT_APP_API_URL_DEPLOY
+  : process.env.REACT_APP_API_URL_LOCAL;
+ 
   const settings = {
-    dots: false,
-    fade: true,
+    //dots: true,
     infinite: true,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 2000,
+    cssEase: "linear"
+
   };
+ 
   const { carId } = useParams();
   const [car, setCar] = useState(null);
 
   useEffect(() => {
     const fetchCar = async () => {
+      console.log(url)
       try {
-        const response = await axios.get(`http://localhost:8080/cars/${carId}`);
+        const response = await axios.get(`${url}cars/${carId}`);
         setCar(response.data.car);
        
       } catch (error) {
@@ -48,16 +55,16 @@ const CarDetail = () => {
   <div className="imagesList">
               <Slider {...settings}>
                 <div>
-                  <img src={`http://localhost:8080/${car.image1}`} />
+                  <img src={`${url}${car.image1}`} />
                 </div>
                 <div>
-                  <img src={`http://localhost:8080/${car.image2}`} />
+                  <img src={`${url}${car.image2}`} />
                 </div>
                 <div>
-                  <img src={`http://localhost:8080/${car.image3}`} />
+                  <img src={`${url}${car.image3}`} />
                 </div>
                 <div>
-                  <img src={`http://localhost:8080/${car.image4}`} />
+                  <img src={`${url}${car.image4}`} />
                 </div>
               </Slider>
             </div>
@@ -72,13 +79,21 @@ const CarDetail = () => {
                   <Typography gutterBottom variant="h5" component="div">
                     {car.model}
                   </Typography>
-                  <Typography variant="body2" color="text.primary">
+                  <Typography variant="body3" color="text.primary">
                     {car.description}
                   </Typography>
+                  <Typography gutterBottom variant="h3" component="div">
+                    {car.prix}
+                  </Typography>
+                  <Typography variant="h5" color="text.primary">
+                  Chiamateci Ora E
+                  </Typography>
+                  <Typography variant="h5" color="text.primary">
+                Concludete Un Affare +393511042762
+                  </Typography>
                 </CardContent>
-                <CardActions>
-                  <Button size="small">{car.prix}</Button>
-                </CardActions>
+                
+               
               </Card>
     </div>
  

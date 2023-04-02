@@ -11,6 +11,9 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 function DashBoard() {
+  const url = process.env.NODE_ENV === 'production'
+  ? process.env.REACT_APP_API_URL_DEPLOY
+  : process.env.REACT_APP_API_URL_LOCAL;
   // State
   const [open, setOpen] = useState(false);
 
@@ -37,7 +40,7 @@ function DashBoard() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/upload",
+        `${url}upload`,
         formData,
         {
           headers: {
@@ -82,7 +85,7 @@ function DashBoard() {
 
   const fetchCars = async () => {
     // Fetch the notes
-    const res = await axios.get("http://localhost:8080/cars");
+    const res = await axios.get(`${url}cars`);
 
     // Set to state
     setCars(res.data.cars);
@@ -90,7 +93,7 @@ function DashBoard() {
 
   const deleteCar = async (_id) => {
     // Delete the note
-    const res = await axios.delete(`http://localhost:8080/cars/${_id}`);
+    const res = await axios.delete(`${url}cars/${_id}`);
 
     // Update state
     const newCars = [...cars].filter((car) => {
@@ -128,7 +131,7 @@ function DashBoard() {
 
     // Send the update request
     const res = await axios.put(
-      `http://localhost:8080/cars/${updateForm._id}`,
+      `${url}cars/${updateForm._id}`,
       { name, model, prix, description }
     );
 

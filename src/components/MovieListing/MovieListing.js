@@ -9,11 +9,14 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
 const MovieListing = () => {
+  const url = process.env.NODE_ENV === 'production'
+  ? process.env.REACT_APP_API_URL_DEPLOY
+  : process.env.REACT_APP_API_URL_LOCAL;
   const [cars, setCars] = useState(null);
 
   const fetchCars = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/cars");
+      const res = await axios.get(`${url}cars`);
       setCars(res.data.cars);
     } catch (error) {
       console.error(error);

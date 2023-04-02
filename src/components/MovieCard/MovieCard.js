@@ -3,14 +3,16 @@ import "./MovieCard.scss";
 import { Link } from "react-router-dom";
 const MovieCard = (props) => {
   const { data } = props;
-
+  const url = process.env.NODE_ENV === 'production'
+  ? process.env.REACT_APP_API_URL_DEPLOY
+  : process.env.REACT_APP_API_URL_LOCAL;
   return (
     <div className="card-item">
       <Link to={`/car/${data._id}`}>
         <div className="card-inner">
           <div className="card-top">
             <img
-              src={`http://localhost:8080/${data.image1}`}
+              src={`${url}${data.image1}`}
               alt={data.Title}
             />
           </div>
