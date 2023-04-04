@@ -1,13 +1,18 @@
 @import "../../common/colors.scss";
 .footer {
+   
+    color: black;
+    background-color: rgb(217, 218, 224);
     position: relative;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: rgb(13, 51, 175);
-    color: #fff;
-    text-align: center;
+    margin: 2%; 
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   
+  }
+  
+  .container-footer {
+  
     display: flex;
-   align-items: spa;
+    justify-content: center;
+    
   }

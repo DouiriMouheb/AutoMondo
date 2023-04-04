@@ -3,11 +3,15 @@ import ScrollToTop from "react-scroll-to-top";
 import "./Fotter.scss";
 const Footer = () => {
   return (
-    <div className="footer">
-        <ScrollToTop smooth top={10} /> 
-      <div>Creation H&M Digital</div>
-      <div>2023</div>
-    </div>
+  
+   <footer className="footer">
+   <ScrollToTop smooth top={10} /> 
+ <div className="container-footer">
+   <p>Created By H&M Copyright © {new Date().getFullYear()}</p>
+
+ </div>
+</footer>
+       
   );
 };
 

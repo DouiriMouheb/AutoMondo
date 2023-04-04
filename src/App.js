@@ -7,6 +7,7 @@ import MovieDetail from "./components/MovieDetails/MovieDetail";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import Footer from "./components/Footer/Footer";
 import DashBoard from "./components/Admin/DashBoard";
+import Login from "./components/Admin/Login";
 
 function App() {
   return (
@@ -14,17 +15,21 @@ function App() {
       <div className="app">
         <Router>
           <Header></Header>
+          
           <div className="container">
             <Routes>
               <Route path="/" exact element={<Home />} />
               <Route path="/car/:carId" element={<MovieDetail />} />
               <Route path="*" element={<PageNotFound />} />
               <Route path="/admin" element={<DashBoard/>}/>
+              <Route path="/login" element={<Login/>}/>
             </Routes>
+            
           </div>
         </Router>
+        <Footer  /> 
       </div>
-     {/*  <Footer +393511042762 /> */}
+     
     </>
   );
 }
